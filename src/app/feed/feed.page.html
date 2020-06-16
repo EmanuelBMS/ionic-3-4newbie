@@ -4,31 +4,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card>
-  <div class="list card">
+<ion-content padding>
 
-    <div class="item item-avatar">
-      <img src="assets/images/mcfly.jpg">
-      <h2>Marty McFly</h2>
-      <p>November 05, 1955</p>
-    </div>
-  
-    <div class="item item-body">
-      <img class="full-image" src="assets/images/delorean.jpg">
-      <p>
-        This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-        the content is from a card-body consisting of an image and paragraph text. The footer
-        consists of tabs, icons aligned left, within the card-footer.
-      </p>
-      <p>
-        <a href="#" class="subdued">1 Like</a>
-        <a href="#" class="subdued">5 Comments</a>
-      </p>
-    </div>
-  
-  </div>
-</ion-card>
 
 <ion-card>
   <ion-item>
@@ -36,42 +13,46 @@
     <ion-avatar item-start>
       <img src="assets/images/mcfly.jpg">
     </ion-avatar>
-      <h2 class="feed_title">Marty McFly</h2>
-      <p class="feed_date">November 05, 1955</p>
+      <h2 class="feed_title">{{objeto_feed.title}}</h2>
+      <p class="feed_date">{{objeto_feed.date}}</p>
   </ion-item>
   
       <img class="full-image" src="assets/images/delorean.jpg">
       <ion-card-content>
-      <p>
-        This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-        the content is from a card-body consisting of an image and paragraph text. The footer
-        consists of tabs, icons aligned left, within the card-footer.
-      </p>
+      <p>{{objeto_feed.description}}</p>
     </ion-card-content>
     <ion-row>
       <ion-col>
       <p>
-        <a href="#" class="subdued">1 Like</a>
-        <a href="#" class="subdued">5 Comments</a>
+        <a href="#" class="subdued">{{objeto_feed.qtde_likes}} Like</a>
+        <a href="#" class="subdued">{{objeto_feed.qtde_coments}} Comments</a>
       </p>
     </ion-col>
     </ion-row>
    
 </ion-card>
- 
-
 <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      That´s the way it is. Keep clean and enjoy your pass.
-    </ion-card-content>
-  </ion-card>
-  <h4>User Name: {{user_name}}</h4>
+<div class="list card" *ngFor="let film of video_list">
+<ion-item>
+  <div class="item item-avatar">
+    <ion-avatar item-start>
+      <img src="assets/images/mcfly.jpg">
+    </ion-avatar>
+      <h2 class="feed_title">{{film.original_title}}</h2>
+      <p class="feed_date">{{film.release_date}}</p>
+  </div>
+</ion-item>
+  <div class="item item-body">
+      <img [src]="'https://image.tmdb.org/t/p/w300/' + film.backdrop_path">
+      <p>{{film.overview}}</p>
+      <p>
+        <a href="#" class="subdued">{{objeto_feed.qtde_likes}} Like(s)</a>
+        <a href="#" class="subdued">{{objeto_feed.qtde_coments}} Comment(s)</a>
+      </p>
+  </div>
+</div>
+</ion-card>
+  <h4>Time Coment: {{objeto_feed.time_coment}}</h4>
   
   <ion-card>
     <ion-item>
